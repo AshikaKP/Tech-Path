@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="game-card p-5" style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);">
+            <div class="text-center mb-4">
+                <div class="d-inline-block p-3 bg-warning rounded-circle mb-3">
+                    <i class="fas fa-medal fa-3x text-white"></i>
+                </div>
+                <h1 class="display-4 text-primary">🎓 Certificate of Completion</h1>
+                <p class="lead text-muted">TechPath Career Development Program</p>
+            </div>
+            
+            <div class="certificate-content bg-white p-5 rounded border-3 border-success" style="border-style: dashed;">
+                <div class="text-center mb-4">
+                    <h3 class="text-secondary">This certifies that</h3>
+                    <h2 class="display-5 text-primary fw-bold">{{ user.name }}</h2>
+                    <div class="w-25 mx-auto border-bottom border-3 border-primary mb-3"></div>
+                </div>
+                
+                <div class="text-center mb-4">
+                    <h4 class="text-success">has successfully completed</h4>
+                    <h3 class="text-primary">{{ user.career or "Frontend Development" }} Career Track</h3>
+                    <p class="text-muted">demonstrating excellence in modern web development skills</p>
+                </div>
+                
+                <div class="row text-center mb-4">
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="fas fa-star fa-2x text-warning mb-2"></i>
+                            <h5>Final Level</h5>
+                            <h3 class="text-primary">{{ user.level }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="fas fa-trophy fa-2x text-warning mb-2"></i>
+                            <h5>Total XP Earned</h5>
+                            <h3 class="text-primary">{{ user.xp }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                            <h5>Skills Completed</h5>
+                            <h3 class="text-primary">{{ user.skills_completed }}/12</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mb-4">
+                    <h5 class="text-muted">Achievement Badges Earned</h5>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap">
+                        <span class="badge-custom bg-warning">{{ user.badge }}</span>
+                        {% if user.login_streak >= 7 %}
+                            <span class="badge-custom bg-danger">🔥 {{ user.login_streak }} Day Streak</span>
+                        {% endif %}
+                        <span class="badge-custom bg-success">Career Finisher</span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p class="text-muted small">Issued on {{ user.created_at.strftime('%d %B %Y') if user.created_at else ''  }} | Certificate ID: #{{ user.id }}{{ user.xp }}</p>
+                    <div class="mt-3">
+                        <button onclick="window.print()" class="btn btn-primary me-2">
+                            <i class="fas fa-print"></i> Print Certificate
+                        </button>
+                        <button onclick="downloadCertificate()" class="btn btn-success">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <h4 class="text-success mb-3">🎉 Congratulations on Your Achievement!</h4>
+                <p class="text-muted">You've mastered essential skills and are ready for your career journey</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('skills') }}" class="btn btn-outline-success">
+                        <i class="fas fa-code"></i> Review Skills
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@media print {
+    .navbar, .btn, .alert {
+        display: none !important;
+    }
+    .game-card {
+        box-shadow: none !important;
+        background: white !important;
+    }
+}
+</style>
+
+<script>
+function downloadCertificate() {
+    alert('Certificate download feature would be implemented here. For now, use Print to save as PDF.');
+}
+</script>
+{% endblock %}

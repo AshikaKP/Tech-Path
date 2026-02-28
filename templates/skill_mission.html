@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="game-card p-5">
+            <div class="text-center mb-4">
+                <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
+                <h2>{{ skill.name }} Mission</h2>
+                <p class="text-muted">Complete the lesson and quiz to earn +20 XP</p>
+            </div>
+            
+            <div class="mission-content">
+                <h4><i class="fas fa-book"></i> Lesson</h4>
+                <div class="lesson-content bg-light p-4 rounded mb-4">
+                    {% if skill.name == "HTML Fundamentals" %}
+                        <h5>HTML Basics</h5>
+                        <p>HTML (HyperText Markup Language) is the foundation of web development. It provides the structure and content of web pages.</p>
+                        <h6>Key Concepts:</h6>
+                        <ul>
+                            <li>HTML elements and tags</li>
+                            <li>Document structure (html, head, body)</li>
+                            <li>Common elements: headings, paragraphs, links, images</li>
+                            <li>Semantic HTML5 elements</li>
+                        </ul>
+                        <h6>Example:</h6>
+                        <pre class="bg-dark text-white p-3 rounded"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    
+                    {% elif skill.name == "CSS Basics & Layouts" %}
+                        <h5>CSS Fundamentals</h5>
+                        <p>CSS (Cascading Style Sheets) is used to style and layout HTML elements. It controls colors, fonts, spacing, and positioning.</p>
+                        <h6>Key Concepts:</h6>
+                        <ul>
+                            <li>Selectors and properties</li>
+                            <li>Box model (margin, padding, border)</li>
+                            <li>Display and positioning</li>
+                            <li>Flexbox and Grid layouts</li>
+                        </ul>
+                        <h6>Example:</h6>
+                        <pre class="bg-dark text-white p-3 rounded"><code>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}</code></pre>
+                    
+                    {% elif skill.name == "JavaScript Fundamentals" %}
+                        <h5>JavaScript Basics</h5>
+                        <p>JavaScript is a programming language that adds interactivity to web pages. It can manipulate HTML elements and respond to user actions.</p>
+                        <h6>Key Concepts:</h6>
+                        <ul>
+                            <li>Variables and data types</li>
+                            <li>Functions and scope</li>
+                            <li>DOM manipulation</li>
+                            <li>Event handling</li>
+                        </ul>
+                        <h6>Example:</h6>
+                        <pre class="bg-dark text-white p-3 rounded"><code>// Select an element
+const button = document.querySelector('button');
+
+// Add event listener
+button.addEventListener('click', function() {
+    alert('Button clicked!');
+});
+
+// Change content
+document.getElementById('title').textContent = 'New Title';</code></pre>
+                    
+                    {% else %}
+                        <h5>{{ skill.name }}</h5>
+                        <p>This skill covers advanced concepts in {{ skill.name }}. You'll learn industry best practices and real-world applications.</p>
+                        <h6>What you'll learn:</h6>
+                        <ul>
+                            <li>Core concepts and principles</li>
+                            <li>Practical implementation</li>
+                            <li>Best practices and patterns</li>
+                            <li>Real-world projects</li>
+                        </ul>
+                    {% endif %}
+                </div>
+                
+                <h4><i class="fas fa-question-circle"></i> Quiz</h4>
+                <div class="quiz-content bg-light p-4 rounded">
+                    <form method="POST" action="{{ url_for('complete_skill', skill_id=skill.id) }}">
+                        {% if skill.name == "HTML Fundamentals" %}
+                            <div class="mb-3">
+                                <p><strong>Question 1:</strong> What does HTML stand for?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="a" required>
+                                    <label class="form-check-label">HyperText Markup Language</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="b">
+                                    <label class="form-check-label">High Tech Modern Language</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="c">
+                                    <label class="form-check-label">Home Tool Markup Language</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 2:</strong> Which HTML5 element is used for navigation?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="a" required>
+                                    <label class="form-check-label">&lt;nav&gt;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="b">
+                                    <label class="form-check-label">&lt;navigation&gt;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="c">
+                                    <label class="form-check-label">&lt;menu&gt;</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 3:</strong> What is the purpose of semantic HTML?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="a" required>
+                                    <label class="form-check-label">To describe meaning and structure</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="b">
+                                    <label class="form-check-label">To make pages look better</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="c">
+                                    <label class="form-check-label">To add animations</label>
+                                </div>
+                            </div>
+                        
+                        {% elif skill.name == "CSS Basics & Layouts" %}
+                            <div class="mb-3">
+                                <p><strong>Question 1:</strong> Which CSS property is used to change text color?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="a" required>
+                                    <label class="form-check-label">color</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="b">
+                                    <label class="form-check-label">text-color</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="c">
+                                    <label class="form-check-label">font-color</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 2:</strong> What does Flexbox do?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="a" required>
+                                    <label class="form-check-label">Creates flexible layouts</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="b">
+                                    <label class="form-check-label">Adds animations</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="c">
+                                    <label class="form-check-label">Changes colors</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 3:</strong> Which property creates a grid layout?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="a" required>
+                                    <label class="form-check-label">display: grid</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="b">
+                                    <label class="form-check-label">layout: grid</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="c">
+                                    <label class="form-check-label">position: grid</label>
+                                </div>
+                            </div>
+                        
+                        {% else %}
+                            <div class="mb-3">
+                                <p><strong>Question 1:</strong> What is the correct way to declare a JavaScript variable?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="a" required>
+                                    <label class="form-check-label">var x = 5;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="b">
+                                    <label class="form-check-label">variable x = 5;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" value="c">
+                                    <label class="form-check-label">v x = 5;</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 2:</strong> What is a function in JavaScript?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="a" required>
+                                    <label class="form-check-label">Reusable block of code</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="b">
+                                    <label class="form-check-label">A variable type</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" value="c">
+                                    <label class="form-check-label">HTML element</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p><strong>Question 3:</strong> How do you add a comment in JavaScript?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="a" required>
+                                    <label class="form-check-label">// This is a comment</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="b">
+                                    <label class="form-check-label">&lt;!-- This is a comment --&gt;</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" value="c">
+                                    <label class="form-check-label"># This is a comment</label>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-game btn-lg">
+                                <i class="fas fa-check"></i> Complete Quiz (+20 XP)
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('skills') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Skills
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

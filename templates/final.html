@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="game-card p-5">
+            <div class="text-center mb-5">
+                <i class="fas fa-crown fa-4x text-warning mb-3"></i>
+                <h2>Final Career Challenge</h2>
+                <p class="text-muted">Complete all three assessments to earn your certificate and +200 XP!</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                            <h5>Final Quiz</h5>
+                            <p class="text-muted">Test your knowledge with comprehensive questions</p>
+                            <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-success">
+                        <div class="card-body text-center">
+                            <i class="fas fa-code fa-3x text-success mb-3"></i>
+                            <h5>Mini Project</h5>
+                            <p class="text-muted">Build a real-world application</p>
+                            <button class="btn btn-success" onclick="startProject()">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-info">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-alt fa-3x text-info mb-3"></i>
+                            <h5>Resume Checklist</h5>
+                            <p class="text-muted">Prepare your professional resume</p>
+                            <button class="btn btn-info" onclick="viewChecklist()">View Checklist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quiz-section" class="mt-4" style="display: none;">
+                <h4><i class="fas fa-question-circle"></i> Final Quiz</h4>
+                <div class="bg-light p-4 rounded">
+                    <form method="POST" action="{{ url_for('final') }}">
+                        <div class="mb-3">
+                            <p><strong>Question 1:</strong> What is the purpose of semantic HTML5 elements?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="final_q1" value="a">
+                                <label class="form-check-label">To provide meaning to content structure</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="final_q1" value="b">
+                                <label class="form-check-label">To add styling to elements</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p><strong>Question 2:</strong> Which JavaScript method is used to select an element by ID?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="final_q2" value="a">
+                                <label class="form-check-label">getElementById()</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="final_q2" value="b">
+                                <label class="form-check-label">querySelector()</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-game">Complete Final Challenge</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="project-section" class="mt-4" style="display: none;">
+                <h4><i class="fas fa-code"></i> Mini Project: Portfolio Website</h4>
+                <div class="bg-light p-4 rounded">
+                    <h5>Project Requirements:</h5>
+                    <ul>
+                        <li>Create a responsive portfolio website</li>
+                        <li>Include sections: About, Projects, Skills, Contact</li>
+                        <li>Use semantic HTML5 elements</li>
+                        <li>Implement modern CSS with Flexbox/Grid</li>
+                        <li>Add interactive JavaScript features</li>
+                        <li>Ensure mobile responsiveness</li>
+                    </ul>
+                    
+                    <h5>Technologies to Use:</h5>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-danger">HTML5</span>
+                        <span class="badge bg-primary">CSS3</span>
+                        <span class="badge bg-warning">JavaScript</span>
+                        <span class="badge bg-info">Responsive Design</span>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Start with the HTML structure, then add styling, and finally implement JavaScript functionality.
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="markProjectComplete()">Mark Project Complete</button>
+                </div>
+            </div>
+            
+            <div id="checklist-section" class="mt-4" style="display: none;">
+                <h4><i class="fas fa-file-alt"></i> Resume Checklist</h4>
+                <div class="bg-light p-4 rounded">
+                    <h5>Essential Resume Sections:</h5>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="contact">
+                        <label class="form-check-label" for="contact">Contact Information (Email, Phone, LinkedIn)</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="summary">
+                        <label class="form-check-label" for="summary">Professional Summary</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="skills">
+                        <label class="form-check-label" for="skills">Technical Skills Section</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="projects">
+                        <label class="form-check-label" for="projects">Projects Portfolio</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="education">
+                        <label class="form-check-label" for="education">Education Background</label>
+                    </div>
+                    
+                    <h5 class="mt-3">Frontend Developer Skills to Highlight:</h5>
+                    <ul>
+                        <li>HTML5 & Semantic Markup</li>
+                        <li>CSS3 & Modern Layouts (Flexbox, Grid)</li>
+                        <li>JavaScript ES6+ & DOM Manipulation</li>
+                        <li>Responsive Design & Mobile-First Development</li>
+                        <li>Version Control (Git)</li>
+                        <li>Modern Frameworks (React, Vue, or Angular)</li>
+                    </ul>
+                    
+                    <button class="btn btn-info" onclick="markChecklistComplete()">Mark Checklist Complete</button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('skills') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Skills
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function startQuiz() {
+    document.getElementById('quiz-section').style.display = 'block';
+    document.getElementById('project-section').style.display = 'none';
+    document.getElementById('checklist-section').style.display = 'none';
+}
+
+function startProject() {
+    document.getElementById('project-section').style.display = 'block';
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('checklist-section').style.display = 'none';
+}
+
+function viewChecklist() {
+    document.getElementById('checklist-section').style.display = 'block';
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('project-section').style.display = 'none';
+}
+
+function markProjectComplete() {
+    alert('Project marked as complete! Great work!');
+}
+
+function markChecklistComplete() {
+    alert('Resume checklist completed! You\'re ready for your job search!');
+}
+</script>
+{% endblock %}

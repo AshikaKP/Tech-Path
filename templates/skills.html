@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h2><i class="fas fa-code"></i> {{ user.career }} Skill Tree</h2>
+    <p class="text-muted">Complete skills to gain experience and unlock new abilities</p>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="game-card p-3">
+            <h5><i class="fas fa-user"></i> Your Progress</h5>
+            <div class="mb-3">
+                <span class="level-badge">Level {{ user.level }}</span>
+            </div>
+            <div class="xp-bar mb-2">
+                {% set xp_percentage = ((user.xp % 500) // 5) %}
+                <div class="xp-progress" style="width: {{ xp_percentage }}%"></div>
+            </div>
+            <small>{{ user.xp }} XP</small>
+            
+            <hr>
+            
+            <h6><i class="fas fa-trophy"></i> Badges Earned</h6>
+            <div class="mt-2">
+                <span class="badge-custom bg-warning">{{ user.badge }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        <div class="game-card p-4">
+            <h4><i class="fas fa-sitemap"></i> Skill Map</h4>
+            
+            {% for skill in skills %}
+                {% set is_completed = skill.id in completed_skill_ids %}
+                {% set is_locked = user.level < skill.required_level %}
+                
+                <div class="skill-card {{ 'completed' if is_completed else ('locked' if is_locked else '') }}">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5>
+                                {% if is_completed %}
+                                    <i class="fas fa-check-circle text-success"></i>
+                                {% elif is_locked %}
+                                    <i class="fas fa-lock text-muted"></i>
+                                {% else %}
+                                    <i class="fas fa-play-circle text-primary"></i>
+                                {% endif %}
+                                {{ skill.name }}
+                            </h5>
+                            <p class="mb-1">
+                                {% if is_completed %}
+                                    <span class="badge bg-success">Completed</span>
+                                {% elif is_locked %}
+                                    <span class="badge bg-secondary">Requires Level {{ skill.required_level }}</span>
+                                {% else %}
+                                    <span class="badge bg-primary">Available</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            {% if not is_completed and not is_locked %}
+                                <a href="{{ url_for('skill_mission', skill_id=skill.id) }}" class="btn btn-game btn-sm">
+                                    Start Mission
+                                </a>
+                            {% elif is_completed %}
+                                <span class="text-success"><i class="fas fa-star"></i> +20 XP Earned</span>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>
+                                    <i class="fas fa-lock"></i> Locked
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            {% if user.skills_completed >= 8 %}
+                <div class="text-center mt-4">
+                    <div class="alert alert-success">
+                        <h5><i class="fas fa-crown"></i> All Skills Completed!</h5>
+                        <p>You're ready for the final challenge!</p>
+                        <a href="{{ url_for('final') }}" class="btn btn-success btn-lg">
+                            Take Final Challenge (+200 XP)
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
