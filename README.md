@@ -36,11 +36,6 @@
 - Libraries used: [Flask-SQLAlchemy (Database ORM), Gunicorn (Production Server)]
 - Tools used: [VS Code, Git & GitHub, Render (Cloud Deployment Platform), Jinja2 (Flask templating engine)]
 
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
-
 ---
 
 ## Features
