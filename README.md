@@ -141,7 +141,9 @@ List the key features of your project:
 ### Video
 [Add your demo video link here - https://drive.google.com/file/d/1MWlIlWfJAlQzyy-u32qRKWkZK5prsy_E/view?usp=sharing]
 
-*Explain what the video demonstrates - key features, user flow, technical highlights*
+*Explain what the video demonstrates - the user register into the webite and logs in with that same account then the user chooses desired career 
+then it navigates to skill map where you can complete missions as skill and for each mission u get extra xp points keeping u motivated and only if u complete a level u can unlock other levels or learning and when u complete all the levels in skill map u can unlock the final level where the certificate is generated
+the project also has a creative dashboard to check ur progress*
 
 
 ---
