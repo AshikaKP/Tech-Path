@@ -4,7 +4,7 @@
 
 # [TechPath] 🎯
 
-## Basic Details
+## Basic Details :Tech-Path is a gamified career guidance and skill development web application that helps users follow structured learning roadmaps based on their chosen career path. It tracks progress using XP and levels, making skill-building more engaging and goal-oriented than traditional learning methods.
 
 ### Team Name: [BitPair]
 
