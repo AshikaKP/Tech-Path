@@ -6,23 +6,23 @@
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [BitPair]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [Ashika K P] - [College Of Engineering Thalassery]
+- Member 2: [Rhthikna P V] - [College Of Engineering Thalassery]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://tech-path.onrender.com/]
 
 ### Project Description
-[2-3 lines about what your project does]
+[Tech-Path is a simple gamified career guidance and skill development web application that helps users explore structured career paths and track their learning progress. It provides step-by-step skill missions, XP-based leveling, and achievement badges to make skill-building interactive and goal-oriented. The platform transforms career planning into an engaging, game-like experience.]
 
 ### The Problem statement
-[What problem are you solving?]
+[Tech-Path solves the problem of career confusion and unstructured skill development among students and beginners. Many learners struggle to identify the right skills for their desired career and often follow random, disconnected courses without a clear roadmap. Unlike boring and passive learning methods, Tech-Path provides a simple gamified, step-by-step learning path with missions, XP, and progress tracking to make skill-building structured, engaging, and goal-oriented]
 
 ### The Solution
-[How are you solving it?]
+[Tech-Path solves this problem by providing structured, career-specific learning roadmaps combined with gamification. Instead of random courses, users select a career path and receive step-by-step skill missions designed in the correct learning order. The platform tracks progress using XP, levels, and achievements, making learning interactive, measurable, and more engaging than traditional passive methods.
 
 ---
 
@@ -31,10 +31,10 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [Python, HTML, CSS]
+- Frameworks used: [Flask (Backend Web Framework), Bootstrap (Frontend Styling Framework)]
+- Libraries used: [Flask-SQLAlchemy (Database ORM), Gunicorn (Production Server)]
+- Tools used: [VS Code, Git & GitHub, Render (Cloud Deployment Platform), Jinja2 (Flask templating engine)]
 
 **For Hardware:**
 - Main components: [List main components]
@@ -46,10 +46,10 @@
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [Career-Based Skill Roadmaps : Users can select a desired career path and receive a structured, step-by-step learning roadmap tailored to that field.]
+- Feature 2: [Gamified Learning System :The platform uses XP points, levels, and achievement badges to make learning interactive and more engaging than traditional passive methods.]
+- Feature 3: [Progress Tracking Dashboard :Users can track completed skills, monitor their progress, and see how close they are to becoming job-ready.]
+- Feature 4: [User Authentication System: Secure registration and login system to personalize learning paths and store user progress]
 
 ---
 
@@ -59,12 +59,12 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
+[Installation commands - pip install -r requirements.txt]
 ```
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+[Run commands - python app.py]
 ```
 
 ### For Hardware:
@@ -82,6 +82,10 @@ List the key features of your project:
 ### For Software:
 
 #### Screenshots (Add at least 3)
+
+<p>
+  <img src="./img.png" alt="Project Banner" width="100%">
+</p>
 
 ![Screenshot1](Add screenshot 1 here with proper name)
 *Add caption explaining what this shows*
