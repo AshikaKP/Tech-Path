@@ -111,7 +111,6 @@ List the key features of your project:
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
 *Tech-Path uses a client–server architecture where the frontend (HTML, CSS, Bootstrap) handles user interaction and the backend (Flask) manages logic and routing. User data such as progress, XP, and completed skills are stored in SQLite using SQLAlchemy ORM. When a user performs an action, the request flows from the browser to Flask, which updates the database and returns the updated results to the UI. The application is deployed using Gunicorn on Render for production hosting*
 <p>
   <img src="./flowchart.jpeg" alt="flow" width="100%">
